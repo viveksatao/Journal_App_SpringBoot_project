@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 
 @Document(collection = "journal_entries")
 public class JournalEntry {
@@ -23,7 +25,7 @@ public class JournalEntry {
     @Size(max = 100, message = "Must be less than 100")
     private String content;
 
-
+    private Date savedDate;
 
     @Override
     public String toString() {
@@ -31,7 +33,16 @@ public class JournalEntry {
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
+                ", savedDate=" + savedDate +
                 '}';
+    }
+
+    public Date getSavedDate() {
+        return savedDate;
+    }
+
+    public void setSavedDate(Date savedDate) {
+        this.savedDate = savedDate;
     }
 
     public String getId() {

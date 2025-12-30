@@ -5,12 +5,20 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
-
+@Setter
+@Getter
+@ToString
+@Data
 @Document(collection = "journal_entries")
 public class JournalEntry {
 
@@ -25,47 +33,8 @@ public class JournalEntry {
     @Size(max = 100, message = "Must be less than 100")
     private String content;
 
-    private Date savedDate;
-
-    @Override
-    public String toString() {
-        return "JournalEntry{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", savedDate=" + savedDate +
-                '}';
-    }
-
-    public Date getSavedDate() {
-        return savedDate;
-    }
-
-    public void setSavedDate(Date savedDate) {
-        this.savedDate = savedDate;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
+    private LocalDateTime savedDate;
 }
+
+
+

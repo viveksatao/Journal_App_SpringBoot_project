@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JournalService
@@ -26,16 +27,22 @@ public class JournalService
      return journalRepo.findAll();
  }
 
- public JournalEntry findById(String id)
+ public Optional<JournalEntry> findById(String id)
  {
-     return journalRepo.findById(id).orElseThrow(
-             () ->  new RuntimeException("Journal entry with id : "+id+" NOT FOUND"));
+     return journalRepo.findById(id);
  }
 
  public void deleteById(String id)
  {
-     journalRepo.deleteById(id);
-     System.out.println("Successfully Deleted ");
+     if(journalRepo.existsById(id))
+     {
+         journalRepo.deleteById(id);
+         System.out.println("Successfully Deleted ");
+     }
+    else {
+         System.out.println("Id not Exist");
+     }
+
  }
 
 

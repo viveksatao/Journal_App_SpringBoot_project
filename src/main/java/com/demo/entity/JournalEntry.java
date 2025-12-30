@@ -5,10 +5,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,6 +16,7 @@ import java.util.Date;
 @Getter
 @ToString
 @Data
+@NoArgsConstructor
 @Document(collection = "journal_entries")
 public class JournalEntry {
 

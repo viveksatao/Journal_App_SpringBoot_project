@@ -18,7 +18,7 @@ public class JournalService
 @Autowired
 private UserService userService;
 
-
+@Transactional
  public JournalEntry saveJournalEntry(JournalEntry journalEntry, String userName)
  {
      User user = userService.findByUserName(userName);
